@@ -1,0 +1,29 @@
+\section{Text Embeddings as Features}
+
+As we have just seen when we pass a text as input though a 
+text embedding model, what the model outputs is a vector.
+Mathematically written a sequence of inputs tokens $I$, 
+where $I = \{i_1, i_2, ..., i_t\}$, is mapped to a high dimensional 
+vector $V$, where $V = \{v_1, v_2, ..., v_d\}$.
+Where $d$ is the dimension of the vector, which will vary from model
+to model. Models based on BERT usually have a dimension of either 
+$512$ or $768$ as noted from experience, while other models might have
+a different dimension. $t$ is the number of tokens in the input sequence.
+ 
+Vectors in a high dimensional space are hard to visualize, but
+we can use dimension reduction techniques to reduce the dimension.
+This will allow us to visualize the vectors in a 2D or 3D space, but 
+we have to remember that the reduced dimension space is not the same as
+the original one, and much information might be lost. 
+
+Techniques like PCA, t-SNE, UMAP, and others can be used to reduce the 
+dimensions, and they have their pros and cons. PCA is a linear technique
+and computes rather quickly, but it might not be able to capture the
+non-linear relationships in the data. t-SNE is a non-linear technique as well as UMAP.
+
+Since the vectors outputted from the text embedding models are 
+representations of the texts embedded, they can be used as features to 
+predict or classify texts. Unsupervised they can be categories 
+to group similar texts together. Techniques like K-means clustering or
+DBSCAN works well with text embeddings. If labels are present in the data, the text embeddings can be used as features
+to train a supervised model.

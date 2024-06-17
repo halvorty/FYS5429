@@ -1,0 +1,55 @@
+
+% ===========================================
+\section{Introduction}\label{sec:Introduction}
+Language is a cornerstone for humans, we use it everywhere. 
+So cumbersome is language that it has become a field of study in itself, linguistics.
+Even for physicist, language is important. Although math may be 
+what most relates to physics, when reading a physics text book or 
+article language is also present, communicating ideas and concepts.
+
+In the digital age computers have increasingly become a part of many sciences, and linguistics is no exception.
+The cross over between linguistics and computer science is named Natural Language Processing (NLP). 
+
+For computers to manipulate text it needs to be represented in a way that the computer can work with effectively.
+This is where text embeddings come in. Text embeddings are a way to represent text in a vector space, 
+where the text is mapped to a vector. Vectors are perfect for computers to work with,
+and therefor creating good representations of text is highly beneficial 
+for many NLP tasks.
+
+In recent years the the revolution of deep learning has, as with many 
+other parts of computer science, had a big impact on NLP. 
+One of the key component of making models such as chatGPT 
+possible is the transformer architecture, which are discussed later 
+in this report. The same architecture has also lead the way for 
+transformer based text embedding models, a new way of creating text representations.
+
+
+\subsection{Structure of the Report}
+The structure of this report deviates from that a usual computational science report.
+In this report I have two different objectives, the first is explaining how 
+Transformer based text embedding models work. As the title of the report
+suggest I will do this by starting with the well known FNN. Then building
+upon this with the RNN architechture which has been important in the field of
+NLP, highlighting a couple of limitations. 
+
+Next I will describe how the Transformer architechture solves some of these limitations
+of RNN models. The Transformer model is the basis for Transformer based text embedding models,
+which I will describe in the following section. Looking in detail of 
+specifics of these models.
+
+The second objective of this report is investigating how text embeddings can be used
+for different purposes.
+This will be done in the section Text Embeddings as Features. 
+
+In addition to describing how text embeddings can be used, I will also 
+look at a specific example using a dataset. This mini experiment will
+try to classify news articles based on text embeddings of only their titles.
+These titles already have a label, and I train a simple FNN to classify the articles.
+In that section I will present the results as well discuss them.
+
+Lastly i will in the discussion section discuss more generally 
+how text embeddings can be used in different contexts, what obstacles text embeddings
+still face in representing text, and what the future might hold for text embeddings.
+
+The github repository for this report can be found at \url{https://github.com/halvorty/FYS5429}
+

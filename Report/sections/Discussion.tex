@@ -1,0 +1,20 @@
+\section{Discussion}
+Transformer based text embedding models are 
+a useful tool to represent text. In differ from the
+RNNs they can be more effectively parallelized,
+and can learn longer dependencies in text. They also 
+are able to deal with sequential data much more naturally
+than the FNNs.
+
+Text embeddings can
+effectively be for a variety of different downstream tasks in 
+easy matter. In this mini experiment I showed how text embeddings
+can be used to classify news articles based on their titles, using a simple
+FNN. The results were promising. Although the model was not very complex
+it reached a accuracy of 0.85 on the validation set. 
+
+Further research can be done to improve the model. 
+Different hyperparameters should be tested, as well as looking into other 
+possibilities for activation functions, optimizers and learning rates etc.
+
+

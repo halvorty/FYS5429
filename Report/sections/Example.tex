@@ -1,0 +1,66 @@
+\section{Classifying News Categories from Titles}
+
+\subsection{Data}
+The data for this experiment is gather from kaggle\footnote{Link to the dataset: \url{https://www.kaggle.com/datasets/victornuez/google-news-uk-2010-2024}}
+and consist of $69588$ titles of news article, gathered from Google News UK, witch a category label for each title.
+The categories and the number of titles in each category are shown in Table \ref{tab:categories} \cite{news_uk_dataset}.
+
+\begin{table}[h!]
+    \centering
+    \caption{Number of titles in each category.}
+    \begin{tabular}{c@{\hspace{1cm}} c}
+        \hline
+        Category name & Number of titles \\
+        \hline
+        Crime & 6714 \\
+        Culture & 3267 \\
+        Economy & 3179 \\
+        Education & 5195 \\
+        Entertainment & 5018 \\
+        Environment &  3197 \\
+        Health & 6422 \\
+        International & 4408 \\
+        Police & 8017 \\
+        Politics & 4478 \\
+        Science & 4327  \\
+        Sports & 5027 \\
+        Technology &  2960 \\
+        Travel & 6479 \\
+        \hline
+    \end{tabular}\label{tab:categories}
+\end{table}
+
+\subsection{Method}
+To embed the news titles, I use a open source model from the the
+team mixedbread\footnote{Link to the mixedbread home page: \url{https://www.mixedbread.ai/}},
+called \textit{mxbai-embed-large-v1}\footnote{Link to the huggingface model card \url{https://huggingface.co/mixedbread-ai/mxbai-embed-large-v1}}.
+The dimension of the embeddings produced by this model is $1024$ \cite{li2023angle_mixbread}.
+
+I set up a simple FNN model to classify the news titles into the categories, implementing 
+it with the PyTorch library. The model consists of an input layer, a hidden layer, and an output layer,
+and are fully connected. The input layer has the same dimension as the output from the text embedding model,
+and the output layer has the same dimension as the number of categories. 
+
+The network is setup with two hidden layers, the first with
+$512$ neurons and the second with $256$ neurons.
+As the activation function, I use the ReLU function, and for the output layer, I use the softmax function.
+The loss function is the cross-entropy loss function, and for the optimizer, I use the Adam optimizer
+with a learning rate of $0.001$.
+
+I train the model for $40$ epochs, and I use a batch size of $32$. 
+$80\%$ of the data is used for training, and $20\%$ is used for validation.
+For measuring the performance of the model, I use the accuracy score,
+which is the number of correct predictions divided by the total number of predictions.
+
+\subsection{Results and Discussion}
+
+The accuracy of the model on the validation set is $88.36\%$. This is 
+for one run of the model, and the accuracy can vary slightly between runs
+due to the random of splitting the data and dividing the batches.
+A natural next step for this project would be to do a more thorough hyperparameter search,
+as well as quantify how much the accuracy can vary between runs.
+
+There is much more to be done, and this mini experiment being more just 
+a demonstration of how transformer based text embeddings can be used.
+With more experimentation, the model surly can be improved. 
+

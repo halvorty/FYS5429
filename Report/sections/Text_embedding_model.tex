@@ -1,0 +1,51 @@
+\section{Text embeddings models}
+Now we return to the main topic of this report, text embeddings.
+The task of text embeddings is to represent a text in a meaningful way, that a computer can understand. 
+This is done by mapping the text into a vector space. 
+
+There are many ways this can be done, one can for example count the number of times a word appears in a text,
+and then represent the text as a vector where each element is the count of a word.
+This type of representation is called a bag of words representation, but a key 
+downside with representation like this is that the order of the words are lost.
+
+For example consider the two sentences:
+\begin{itemize}
+    \item "I love statistical mechanics, but i hate quantum mechanics"
+    \item "I hate quantum mechanics, but i love statistical mechanics"
+\end{itemize}
+These two sentences have the same bag of words representation, but they have different meanings.
+
+Different from the bag of words representation, 
+transformer based text embedding models are able to capture the order and relation between the words in a text.
+
+
+
+\subsection{Sentence-BERT}
+To understand exactly how transformer based text embedding models can capture the 
+order and relation between the words in a text, we will look at the Sentence-BERT model.
+This model was one of the first of it's type to utilize the transformer architecture to create sentence embeddings presented 
+by Reimers and Gurevych in 2019 \cite{reimers2019sentencebert}.
+
+BERT (Bidirectional Encoder Representations from Transformers) set new state-of-the-art 
+performance on various sentence classification and sentence-pair regression tasks.
+However, it requires that both sentences are fed into the network simultaneously, 
+causing a massive computational overhead. 
+For instance, finding the most similar pair in a collection of $10,000$ sentences requires approximately 
+50 million inference computations, which is highly inefficient \cite{reimers2019sentencebert}.
+
+Sentence-BERT (SBERT) addresses this inefficiency by using a siamese network architecture. 
+Siamese networks consist of two identical subnetworks joined at their outputs. 
+These networks share the same weights and are used to generate comparable embeddings for two input sentences. 
+SBERT fine-tunes BERT in such a way that it can produce semantically meaningful 
+sentence embeddings that can be compared using cosine similarity or other distance measures 
+like Euclidean (L2) or Manhattan distance (L1).
+
+The main innovation of SBERT is its ability to derive 
+fixed-size sentence embeddings that capture semantic meaning effectively. 
+This is achieved by fine-tuning BERT with a triplet network structure, 
+where the network learns to minimize the distance between embeddings of similar 
+sentences while maximizing the distance between embeddings of dissimilar sentences.
+This method significantly reduces the computation time required for tasks such as 
+semantic similarity search and clustering. For example, SBERT can reduce the effort 
+of finding the most similar pair in a collection of 10,000 sentences from $65$ hours 
+with BERT to about $5$ seconds.
